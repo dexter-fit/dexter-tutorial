@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: "Build and Deploy production"
+
+# Controls when the workflow will run
+on:
+  #push:
+  #  branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Build of a single container
+      # Sometimes it can be beneficial to use tools like regctl to add additional tags to the built images (like version, etc)
+      - name: Build example
+        run: |
+          docker buildx build --platform linux/amd64,linux/arm64  --push -t example.com/example:latest ./example
+          echo "Done building example"

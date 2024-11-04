@@ -25,3 +25,6 @@ To expand your service architecture, you can easily add more services by creatin
 Once you have defined your services in their respective `docker-compose.yml` files, you can configure the existing NGINX instance to act as a reverse proxy. NGINX will direct incoming traffic to the appropriate service based on the request's domain name or path, ensuring seamless integration and communication between your services.
 
 For detailed guidance on setting up NGINX as a reverse proxy, refer to [the official NGINX documentation](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/).
+
+## Example project
+This repository also contains an example Next.js project (located in `./example`) and a workflow description (located in `./.github/workflows/build.yml`), that could be used to demonstrate the infrastructure. Please change all references to both `example.com` and `example` in `docker-compose` and other deployment specific file. 
